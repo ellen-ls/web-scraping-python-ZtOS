@@ -33,7 +33,7 @@ for palavra in palavras_chave:
         soup = BeautifulSoup(response.content, 'html.parser')
 
         # Encontrar todas as vagas
-        vagas = soup.find_all('div', class_='sc-b2039713-27')  # Ajuste de acordo com a estrutura HTML correta
+        vagas = soup.find_all('div', class_='sc-9474fc43-0')  # Ajuste de acordo com a estrutura HTML correta
 
         if not vagas:
             print(f"Nenhuma vaga encontrada para a palavra '{palavra}', interrompendo a busca nesta página.")
@@ -43,10 +43,10 @@ for palavra in palavras_chave:
         for vaga in vagas:
             # Extrair título, empresa, etc.
             link_tag = vaga.find('a')
-            titulo = vaga.find('h2', class_='sc-b2039713-22').get_text(strip=True) if vaga.find('h2', class_='sc-b2039713-22') else 'Título não encontrado'
-            local = vaga.find('div', class_='sc-b2039713-16').get_text(strip=True) if vaga.find('div', class_='sc-b2039713-16') else 'Local não encontrado'
-            empresa = vaga.find('p', class_='sc-b2039713-8').get_text(strip=True) if vaga.find('p', class_='sc-b2039713-8') else 'Empresa não encontrada'
-            data = vaga.find('p', class_='sc-b2039713-10').get_text(strip=True) if vaga.find('p', class_='sc-b2039713-10') else 'Data não encontrada'
+            titulo = vaga.find('h2', class_='sc-90013fa1-21').get_text(strip=True) if vaga.find('h2', class_='sc-90013fa1-21') else 'Título não encontrado'
+            local = vaga.find('div', class_='sc-90013fa1-18').get_text(strip=True) if vaga.find('div', class_='sc-90013fa1-18') else 'Local não encontrado'
+            empresa = vaga.find('p', class_='sc-90013fa1-7').get_text(strip=True) if vaga.find('p', class_='sc-90013fa1-7') else 'Empresa não encontrada'
+            data = vaga.find('p', class_='sc-90013fa1-9').get_text(strip=True) if vaga.find('p', class_='sc-90013fa1-9') else 'Data não encontrada'
             link = vaga.find('a')['href'] if vaga.find('a') else 'Link não encontrado'
 
             # Verificar se a palavra-chave está no título
@@ -74,7 +74,7 @@ for palavra in palavras_chave:
 df_vagas = pd.DataFrame(dados_vagas)
 
 # Exportar o DataFrame para um arquivo Excel
-excel_file = 'backend_vagas.xlsx'
+excel_file = 'backend-consultant_position.xlsx'
 df_vagas.to_excel(excel_file, index=False)
 
 print(f'Dados exportados com sucesso para {excel_file}.')
